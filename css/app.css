@@ -1,0 +1,234 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/*
+ * Styles for the bg of cards
+ */
+
+.bg {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.bg .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.bg .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.bg .card.show {
+    font-size: 33px;
+}
+
+.bg .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+.bg .card.error {
+    background: red;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.hold-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.hold-panel .xingxing {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.hold-panel .xingxing li {
+    list-style: none;
+    display: inline-block;
+}
+
+.hold-panel .timer {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.hold-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+/* model */
+.model-bg,
+.model-window {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
+}
+.model-bg{
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    background-color: black;
+}
+
+.model-window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    width: 40vw;
+    min-width: 200px;
+    height: 100%;
+    min-height: 150px;
+    margin-left: -20vw;
+    background-color: #fff;
+    padding: 40px;
+    z-index: 20;
+    transform: translateY(-100vh);
+}
+
+.active .model-bg {
+    opacity: 1;
+    z-index: 10;
+}
+.active .model-window {
+    transform: translateY(0);
+}
+
+.model-window p,
+.model-window h1,
+.model-window button,
+.model-window div,
+.model-window i {
+    display: none;
+}
+
+.active .model-window p,
+.active .model-window h1,
+.active .model-window button,
+.active .model-window div,
+.active .model-window i {
+    display: block;
+}
+
+.active .success-sub-msg i {
+    display: inline;
+}
+
+.active .model-window .fa-check {
+    color: #01B500;
+    border: 1px solid #808080;
+    padding: 30px;
+    border-radius: 50%;
+    cursor: default;
+}
+
+.active .model-window .model-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.new-one {
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #01B500;
+    border-radius: 4px;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    cursor: pointer;
+}
+
+.new-one:hover {
+    box-shadow: 0 8px 6px -6px rgba(46, 61, 73, 0.5);
+}
+/* end of model */
+
+/* Responsive */
+@media screen and (max-width: 680px) {
+    .bg {
+        width: 330px;
+        min-height: 340px;
+        padding: 20px;
+    }
+
+    .bg .card {
+        height: 60px;
+        width: 60px;
+    }
+
+    .bg .card.show {
+        font-size: 16px;
+    }
+
+    .hold-panel {
+        width: 320px;
+    }
+}
